@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    tools:context=".LogIn"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="64dp"
+    android:background="@drawable/bg"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            >
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/outline_arrow_back"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-28dp"
+
+                android:text="Login"
+                android:fontFamily="sans-serif"
+                android:textSize="24sp"
+                android:textFontWeight="400"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <!--    main -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="32dp"
+            android:paddingTop="128dp"
+            android:paddingBottom="64dp"
+
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!--            input fill-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text="Good to see you again!"
+                        android:textColor="@color/gray"
+                        android:fontFamily="sans-serif"
+                        android:textSize="18sp"
+                        android:textFontWeight="400"
+                        />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="Email"
+                        android:textColorHint="@color/gray"
+                        android:labelFor="@+id/et_email">
+                        <EditText
+                            android:id="@+id/et_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="16dp"
+                            android:background="@drawable/text_input"
+                            android:text=""
+                            android:fontFamily="sans-serif"
+                            android:textSize="16sp"
+                            android:textFontWeight="300"
+                            android:textColor="@color/white"
+                            android:inputType="textEmailAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="Password"
+                        android:textColorHint="@color/gray"
+                        android:labelFor="@+id/et_password">
+                        <EditText
+                            android:id="@+id/et_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="16dp"
+                            android:background="@drawable/text_input"
+                            android:text=""
+                            android:fontFamily="sans-serif"
+                            android:textSize="16sp"
+                            android:textFontWeight="300"
+                            android:textColor="@color/white"
+                            android:inputType="textPassword" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <!--            -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/send_again"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+
+                    android:fontFamily="sans-serif"
+                    android:text="  Remember me"
+                    android:textColor="@color/gray"
+                    android:textSize="18sp"
+                    android:drawableStart="@drawable/ratio"
+                    />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="-50dp"
+                    android:scaleX="0.52"
+                    android:scaleY="0.6"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/fpw"
+                    />
+            </LinearLayout>
+
+            <!--            button-->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="140dp"
+                android:layout_gravity="center"
+                >
+                <ImageButton
+                    android:id="@+id/btn_login"
+                    android:layout_width="270dp"
+                    android:layout_height="68dp"
+                    android:contentDescription="bg_btn_solid"
+                    android:background="@drawable/btn_solid"
+                    android:layout_gravity="center" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:text="Login"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18sp"
+                    android:textFontWeight="500"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="270dp"
+                android:layout_height="68dp"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/btn_signup_with_google"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+
+                    android:text="Sign Up With"
+                    android:fontFamily="sans-serif"
+                    android:textSize="20sp"
+                    android:textFontWeight="400"
+                    android:textColor="@color/white"
+                    android:drawablePadding="8dp"
+
+                    android:drawableEnd="@drawable/ggicon"
+                    />
+            </FrameLayout>
+            <TextView
+                android:id="@+id/tv_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+
+                android:text="New to GamerPal? Sign Up >"
+                android:fontFamily="sans-serif"
+                android:textSize="18sp"
+                android:textColor="@color/gray"
+                android:textAlignment="center"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

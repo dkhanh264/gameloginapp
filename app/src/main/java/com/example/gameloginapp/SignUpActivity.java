@@ -1,27 +1,36 @@
 package com.example.gameloginapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private TextInputEditText etEmailPhone, etDisplayName, etUsername, etPassword, etConfirmPassword;
+    private EditText etEmailPhone, etDisplayName, etUsername, etPassword, etConfirmPassword;
     private Button btnContinue;
     private ImageView btnBack;
     private TextView tvLogin;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        mAuth = FirebaseAuth.getInstance();
         initViews();
         setupListeners();
     }
@@ -150,15 +159,20 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void handleSignUp() {
-        // Implement your sign up logic here
-        // This could involve API calls, database operations, etc.
-
-        // Example:
-        // String emailPhone = etEmailPhone.getText().toString().trim();
-        // String displayName = etDisplayName.getText().toString().trim();
-        // String username = etUsername.getText().toString().trim();
-        // String password = etPassword.getText().toString();
-
-        // Call your API or handle registration
+        String email = etEmailPhone.getText().toString().trim();
+        String password = etPassword.getText().toString();
+        mAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this, task -> {
+                if (task.isSuccessful()) {
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    Toast.makeText(SignUpActivity.this, "Sign up successful!", Toast.LENGTH_SHORT).show();
+                    // Chuyển sang màn hình đăng nhập hoặc main
+                    Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(SignUpActivity.this, "Sign up failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
     }
 }

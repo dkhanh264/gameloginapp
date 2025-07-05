@@ -1,15 +1,13 @@
 package com.example.gameloginapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.content.Intent;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -19,31 +17,32 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
-import android.widget.Toast;
-import androidx.annotation.Nullable;
 
-public class MainActivity extends AppCompatActivity {
-    private static final int RC_SIGN_IN = 9002;
-    private GoogleSignInClient mGoogleSignInClient;
+public class LogInActivity extends AppCompatActivity {
+    private EditText etEmail, etPassword;
+    private ImageButton btnLogin;
+    private TextView tvSignUp;
     private FirebaseAuth mAuth;
+    private static final int RC_SIGN_IN = 9003;
+    private GoogleSignInClient mGoogleSignInClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_log_in);
 
         mAuth = FirebaseAuth.getInstance();
-        Button btnSignUp = findViewById(R.id.button);
-        Button btnLogIn = findViewById(R.id.button2);
-        Button btnSignUpWithGoogle = findViewById(R.id.button3);
+        etEmail = findViewById(R.id.et_email);
+        etPassword = findViewById(R.id.et_password);
+        btnLogin = findViewById(R.id.btn_login);
+        tvSignUp = findViewById(R.id.tv_sign_up);
+        Button btnSignUpWithGoogle = findViewById(R.id.btn_signup_with_google);
 
-        btnSignUp.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+        btnLogin.setOnClickListener(v -> handleLogin());
+        tvSignUp.setOnClickListener(v -> {
+            Intent intent = new Intent(LogInActivity.this, SignUpActivity.class);
             startActivity(intent);
-        });
-        btnLogIn.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, LogInActivity.class);
-            startActivity(intent);
+            finish();
         });
         setupGoogleSignIn();
         btnSignUpWithGoogle.setOnClickListener(v -> signInWithGoogle());
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, android.content.Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -81,12 +80,36 @@ public class MainActivity extends AppCompatActivity {
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(this, task -> {
                 if (task.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Sign in with Google successful!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    Toast.makeText(LogInActivity.this, "Sign in with Google successful!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(MainActivity.this, "Firebase Auth failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LogInActivity.this, "Firebase Auth failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+    }
+
+    private void handleLogin() {
+        String email = etEmail.getText().toString().trim();
+        String password = etPassword.getText().toString();
+        if (email.isEmpty()) {
+            etEmail.setError("Email is required");
+            return;
+        }
+        if (password.isEmpty()) {
+            etPassword.setError("Password is required");
+            return;
+        }
+        mAuth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this, task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(LogInActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(LogInActivity.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
     }

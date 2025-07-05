@@ -50,19 +50,21 @@
                 android:layout_width="48dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="24dp"
-                android:background="#FF6B35"
+                android:background="@drawable/border_bg"
                 android:backgroundTint="#FF6B35" />
 
             <View
                 android:layout_width="48dp"
                 android:layout_height="8dp"
                 android:layout_marginEnd="24dp"
-                android:background="#D9D9D9" />
+                android:background="@drawable/border_bg"
+                android:backgroundTint="#ffffff" />
 
             <View
                 android:layout_width="48dp"
                 android:layout_height="8dp"
-                android:background="#D9D9D9" />
+                android:background="@drawable/border_bg"
+                android:backgroundTint="#ffffff" />
 
         </LinearLayout>
 
@@ -81,30 +83,25 @@
             android:id="@+id/et_email_phone"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@drawable/input_inner_background"
+            android:background="@drawable/input_bg"
             android:hint="Email or Phone Number *"
             android:inputType="textEmailAddress"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:layout_marginBottom="32dp"
             android:textColor="@android:color/white"
             android:textColorHint="#999999"
             android:textSize="16sp" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/input_gradient_border"
-            android:padding="2dp">
 
-        </FrameLayout>
 
         <!-- Display Name Input -->
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@drawable/input_inner_background">
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/input_bg">
 
             <TextView
                 android:id="@+id/tv_display_name_counter"
@@ -132,21 +129,15 @@
 
         </RelativeLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/input_gradient_border"
-            android:padding="2dp">
 
-        </FrameLayout>
 
         <!-- Username Input -->
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@drawable/input_inner_background">
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/input_bg">
 
             <TextView
                 android:id="@+id/tv_username_counter"
@@ -174,44 +165,31 @@
 
         </RelativeLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/input_gradient_border"
-            android:padding="2dp">
 
-        </FrameLayout>
 
         <!-- Password Input -->
         <EditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@drawable/input_inner_background"
+            android:background="@drawable/input_bg"
             android:hint="Password *"
             android:inputType="textPassword"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:layout_marginBottom="32dp"
             android:textColor="@android:color/white"
             android:textColorHint="#999999"
             android:textSize="16sp" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/input_gradient_border"
-            android:padding="2dp">
 
-        </FrameLayout>
 
         <!-- Confirm Password Input -->
         <EditText
             android:id="@+id/et_confirm_password"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@drawable/input_inner_background"
+            android:background="@drawable/input_bg"
             android:hint="Confirm Password *"
             android:inputType="textPassword"
             android:paddingStart="16dp"
@@ -220,14 +198,7 @@
             android:textColorHint="#999999"
             android:textSize="16sp" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/input_gradient_border"
-            android:padding="2dp">
 
-        </FrameLayout>
 
         <!-- Password Requirements -->
         <LinearLayout

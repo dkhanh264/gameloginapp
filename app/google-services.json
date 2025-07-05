@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "321594452271",
+    "project_id": "game-login-app",
+    "storage_bucket": "game-login-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321594452271:android:030a1468e969b5c34499da",
+        "android_client_info": {
+          "package_name": "com.example.gameloginapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsvQ199mLOmIhQyhTBBDZgQlRah8Y9INM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

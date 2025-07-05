@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Màu nền -->
-    <item android:drawable="#0C0517" /> <!-- Hoặc mã màu khác -->
+    <item android:drawable="@color/night" /> <!-- Hoặc mã màu khác -->
 
     <!-- Vector nằm trên nền -->
     <item android:drawable="@drawable/background_mesh" />
